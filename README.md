@@ -8,7 +8,9 @@
     <body>
         <div id="calc-state"></div>
         <div>
-            <header id="income-section"></header>
+            <header>
+                <h1>Real Revenue <span id='real-revenue'></span></h1>
+            </header>
             <div id="income"></div>
             <div id="materials"></div>
         </div>
@@ -48,11 +50,10 @@ As you can see below, this is an example of a configuration:
         label: 'Materials and Subcontractors',
         placeholder: 'ex. 1000'
     }],
-    headers: [
-        // you can add as many headers as you'd like
-        ['income-section', {
-            title: 'Real Revenue',
-            stateKey: 'realRevenue'
+    observers: [
+        // you can add as many observers as you'd like
+        ['real-revenue', {
+            name: 'realRevenue'
         }]
     ]
 }
@@ -71,22 +72,50 @@ operatingExpensePercentage**
 }]
 ```
 
-**headers**
+**accounts**
 ```javascript
 [
-    ['document_identifer', {
-        title: 'Your header title',
-        stateKey: '' // one of: 'realRevenue', 'profitRemaining', 'percentageRemaining'
+    ['document_identifier', {
+        label: 'Account Label here',
+        labelClassName: 'Your additional label-specific classnames here',
+        placeholder: 'Your placeholder here',
+        className: 'Your additional input-specific classnames here.'
+    }],
+    ['document_identifier', {
+        label: 'Account Label here',
+        labelClassName: 'Your additional label-specific classnames here',
+        placeholder: 'Your placeholder here',
+        className: 'Your additional input-specific classnames here.'
+    }],
+    ['document_identifier', {
+        label: 'Account Label here',
+        labelClassName: 'Your additional label-specific classnames here',
+        placeholder: 'Your placeholder here',
+        className: 'Your additional input-specific classnames here.'
     }]
 ]
 ```
 
-**accounts**
+**observers**
+*incomeReceived,
+materialCost,
+profitPercentage,
+ownerPayPercentage,
+taxPercentage,
+operatingExpensePercentage,
+realRevenue,
+percentageRemaining,
+profitRemaining,
+accounts,
+intoProfit,
+intoOwner,
+intoTax,
+intoOperatingExpense,
+intoAccounts*
 ```javascript
-// TODO
-```
-
-**outputs**
-```javascript
-// TODO
+[
+    ['document_identifer', {
+        name: '' // any of the above observers.
+    }]
+]
 ```
