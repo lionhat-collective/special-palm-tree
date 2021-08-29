@@ -65,8 +65,9 @@ operatingExpensePercentage**
 ```javascript
 ['document_identifier', {
     label: 'Your label here',
+    labelClassName: 'Your additional label-specific classnames here',
     placeholder: 'Your placeholder here',
-    className: 'Your additional classnames here.'
+    className: 'Your additional input-specific classnames here.'
 }]
 ```
 

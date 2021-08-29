@@ -10,8 +10,14 @@
     <div id="root"></div>
     <div>
       <header id="income-section"></header>
+      <header id="allocation-section"></header>
+      <header id="profit-section"></header>
       <div id="income"></div>
       <div id="materials"></div>
+      <div id="profit"></div>
+      <div id="owner-pay"></div>
+      <div id="tax"></div>
+      <div id="operating-expense"></div>
     </div>
     <script type="module" src="/src/main.tsx"></script>
     <script type='text/javascript'>
@@ -25,10 +31,30 @@
             label: 'Materials and Subcontractors',
             placeholder: 'ex. 1000'
           }],
+          profitPercentage: ['profit', {
+            label: 'Profit'
+          }],
+          ownerPayPercentage: ['owner-pay', {
+            label: 'Owner Pay'
+          }],
+          taxPercentage: ['tax', {
+            label: 'Tax'
+          }],
+          operatingExpensePercentage: ['operating-expense', {
+            label: 'Operating Expense'
+          }],
           headers: [
             ['income-section', {
               title: 'Real Revenue',
               stateKey: 'realRevenue'
+            }],
+            ['allocation-section', {
+              title: 'Remaining to be allocated',
+              stateKey: 'percentageRemaining'
+            }],
+            ['profit-section', {
+              title: 'Profit Remaining',
+              stateKey: 'profitRemaining'
             }]
           ]
         })

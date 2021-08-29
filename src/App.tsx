@@ -47,8 +47,8 @@ function App(props: AppProps) {
   const MaterialsField = () => RenderConfig(FieldPortal('material-cost'), props.materialCost)
   const ProfitPercentageField = () => RenderConfig(FieldPortal('profit-percentage'), props.profitPercentage)
   const OwnerPayPercentageField = () => RenderConfig(FieldPortal('owner-pay-percentage'), props.ownerPayPercentage)
-  const TaxPercentageField = () => RenderConfig(FieldPortal('tax-percentage'), props.profitPercentage)
-  const OperatingExpensePercentageField = () => RenderConfig(FieldPortal('operating-expense-percentage'), props.profitPercentage)
+  const TaxPercentageField = () => RenderConfig(FieldPortal('tax-percentage'), props.taxPercentage)
+  const OperatingExpensePercentageField = () => RenderConfig(FieldPortal('operating-expense-percentage'), props.operatingExpensePercentage)
 
   return (
     <>
