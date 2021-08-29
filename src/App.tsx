@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react'
 import ReactDOM from 'react-dom'
-import { ProfitCalculatorField, ProfitCalculatorFieldProps, ProfitCalculatorHeader, ProfitCalculatorHeaderProps } from './profit-calculator/components'
+import { ProfitCalculatorField, ProfitCalculatorFieldProps, ValueObserver, ValueObserverProps } from './profit-calculator/components'
 
 type AppConfig<T extends Record<string, unknown> = Record<string, unknown>> = [string, T]
 type ConfigFieldProps = Omit<ProfitCalculatorFieldProps, 'name'>
@@ -12,7 +12,7 @@ export type AppProps = {
   ownerPayPercentage?: AppConfig<ConfigFieldProps>
   taxPercentage?: AppConfig<ConfigFieldProps>
   operatingExpensePercentage?: AppConfig<ConfigFieldProps>
-  headers?: AppConfig<ProfitCalculatorHeaderProps>[]
+  observers?: AppConfig<ValueObserverProps>[]
 }
 
 function PortalComponent(Component: ReactNode, id: string) {
@@ -33,9 +33,9 @@ const FieldPortal = (name: string) => (props: ConfigFieldProps, id: string) => {
   ), id)
 }
 
-const HeaderPortal = (key?: string) => (props: ProfitCalculatorHeaderProps, id: string) => {
+const ObserverPortal = (key?: string) => (props: ValueObserverProps, id: string) => {
   return PortalComponent((
-    <ProfitCalculatorHeader
+    <ValueObserver
       key={key}
       {...props}
     />
@@ -58,7 +58,7 @@ function App(props: AppProps) {
       <OwnerPayPercentageField />
       <TaxPercentageField />
       <OperatingExpensePercentageField />
-      {props.headers?.map((header, idx) => RenderConfig(HeaderPortal(`header-${idx}`), header)) ?? null}
+      {props.observers?.map((observer) => RenderConfig(ObserverPortal(observer[0]), observer)) ?? null}
     </>
   )
 }

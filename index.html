@@ -9,7 +9,14 @@
   <body>
     <div id="root"></div>
     <div>
-      <header id="income-section"></header>
+      <header>
+        <h1>Income</h1>
+        <h3 id='real-revenue'></h3>
+        <h1>Remaining to be allocated</h1>
+        <h3 id='percent-remaining'></h3>
+        <h1>Profit Remaining</h1>
+        <h3 id='profit-remaining'></h3>
+      </header>
       <header id="allocation-section"></header>
       <header id="profit-section"></header>
       <div id="income"></div>
@@ -18,6 +25,15 @@
       <div id="owner-pay"></div>
       <div id="tax"></div>
       <div id="operating-expense"></div>
+      <div>
+        <ul>
+          <li id='intoProfit'></li>
+          <li id='intoOwner'></li>
+          <li id='intoTax'></li>
+          <li id='intoOperatingExpense'></li>
+          <li id='intoAccounts'></li>
+        </ul>
+      </div>
     </div>
     <script type="module" src="/src/main.tsx"></script>
     <script type='text/javascript'>
@@ -43,22 +59,34 @@
           operatingExpensePercentage: ['operating-expense', {
             label: 'Operating Expense'
           }],
-          headers: [
-            ['income-section', {
-              title: 'Real Revenue',
-              stateKey: 'realRevenue'
+          observers: [
+            ['real-revenue', {
+              name: 'realRevenue'
             }],
-            ['allocation-section', {
-              title: 'Remaining to be allocated',
-              stateKey: 'percentageRemaining'
+            ['percent-remaining', {
+              name: 'percentageRemaining'
             }],
-            ['profit-section', {
-              title: 'Profit Remaining',
-              stateKey: 'profitRemaining'
-            }]
+            ['profit-remaining', {
+              name: 'profitRemaining'
+            }],
+            ['intoProfit', {
+              name: 'intoProfit'
+            }],
+            ['intoOwner', {
+              name: 'intoOwner'
+            }],
+            ['intoTax', {
+              name: 'intoTax'
+            }],
+            ['intoOperatingExpense', {
+              name: 'intoOperatingExpense'
+            }],
+            ['intoAccounts', {
+              name: 'intoAccounts'
+            }],
           ]
         })
-      })
+      });
     </script>
   </body>
 </html>
