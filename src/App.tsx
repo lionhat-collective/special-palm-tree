@@ -20,20 +20,6 @@ function PortalComponent(Component: ReactNode, id: string) {
   return el ? ReactDOM.createPortal(Component, el) : null
 }
 
-// function AppPortal<T extends AppPortalProps>(portalProps?: T, Component: (portalProps: T) => ReactNode) => {
-//   if (typeof portalProps === 'undefined') return null
-//   const [id, props] = portalProps
-//   const el = document.getElementById(id)
-//   return el ? ReactDOM.createPortal(<Component {...props} />, el) : null
-// }
-
-/**
- <ProfitCalculatorField
-      label={props.label}
-      placeholder={props.placeholder}
-      name={name}
-    />
-*/
 const RenderConfig = <T extends AppConfig>(renderer: (props: T['1'], id: string) => React.ReactPortal | null, config?: T): React.ReactPortal | null => {
   return config ? renderer(config[1], config[0]) : null
 }
@@ -55,7 +41,6 @@ const HeaderPortal = (key?: string) => (props: ProfitCalculatorHeaderProps, id: 
     />
   ), id)
 }
-
 
 function App(props: AppProps) {
   const IncomeField = () => RenderConfig(FieldPortal('income'), props.income)

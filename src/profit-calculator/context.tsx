@@ -1,5 +1,5 @@
 import React, { createContext, PropsWithChildren, useCallback, useContext, useMemo, useReducer } from "react";
-import { profitReducer, initialState } from "./reducer";
+import { profitReducer } from "./reducer";
 import { ProfitCalculatorAction, ProfitCalculatorState } from "./types";
 
 function calculateRevenue(income: number, expenditure: number) {
