@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/src/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <div>
+      <header id="income-section"></header>
+      <div id="income"></div>
+      <div id="materials"></div>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+    <script type='text/javascript'>
+      window.addEventListener('load', function() {
+        window.profitCalculator('root', {
+          income: ['income', {
+            label: 'Income Received',
+            placeholder: 'Enter income received'
+          }],
+          materialCost: ['materials', {
+            label: 'Materials and Subcontractors',
+            placeholder: 'ex. 1000'
+          }],
+          headers: [
+            ['income-section', {
+              title: 'Real Revenue',
+              stateKey: 'realRevenue'
+            }]
+          ]
+        })
+      })
+    </script>
+  </body>
+</html>
