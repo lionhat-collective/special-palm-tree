@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.17e50649.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+    <script type="module" crossorigin src="/assets/index.2dd1d9b8.js"></script>
+    <link rel="modulepreload" href="/assets/vendor.c828e799.js">
+  </head>
+  <body>
+    <div id="root"></div>
+    <div>
+      <header>
+        <h1>Income</h1>
+        <h3 id='real-revenue'></h3>
+        <h1>Remaining to be allocated</h1>
+        <h3 id='percent-remaining'></h3>
+        <h1>Profit Remaining</h1>
+        <h3 id='profit-remaining'></h3>
+      </header>
+      <header id="allocation-section"></header>
+      <header id="profit-section"></header>
+      <div id="income"></div>
+      <div id="materials"></div>
+      <div id="profit"></div>
+      <div id="owner-pay"></div>
+      <div id="tax"></div>
+      <div id="operating-expense"></div>
+      <div>
+        <div id="account-1"></div>
+        <div id="account-2"></div>
+        <div id="account-3"></div>
+      </div>
+      <div>
+        <ul>
+          <li id='intoProfit'></li>
+          <li id='intoOwner'></li>
+          <li id='intoTax'></li>
+          <li id='intoOperatingExpense'></li>
+          <li id='intoAccounts'></li>
+        </ul>
+      </div>
+    </div>
+    
+    <script type='text/javascript'>
+      window.addEventListener('load', function() {
+        window.profitCalculator('root', {
+          income: ['income', {
+            label: 'Income Received',
+            placeholder: 'Enter income received'
+          }],
+          materialCost: ['materials', {
+            label: 'Materials and Subcontractors',
+            placeholder: 'ex. 1000'
+          }],
+          profitPercentage: ['profit', {
+            label: 'Profit'
+          }],
+          ownerPayPercentage: ['owner-pay', {
+            label: 'Owner Pay'
+          }],
+          taxPercentage: ['tax', {
+            label: 'Tax'
+          }],
+          operatingExpensePercentage: ['operating-expense', {
+            label: 'Operating Expense'
+          }],
+          accounts: [
+            ['account-1', {
+              label: 'Account 1'
+            }],
+            ['account-2', {
+              label: 'Account 2'
+            }],
+            ['account-3', {
+              label: 'Account 3'
+            }]
+          ],
+          observers: [
+            ['real-revenue', {
+              name: 'realRevenue'
+            }],
+            ['percent-remaining', {
+              name: 'percentageRemaining'
+            }],
+            ['profit-remaining', {
+              name: 'profitRemaining'
+            }],
+            ['intoProfit', {
+              name: 'intoProfit'
+            }],
+            ['intoOwner', {
+              name: 'intoOwner'
+            }],
+            ['intoTax', {
+              name: 'intoTax'
+            }],
+            ['intoOperatingExpense', {
+              name: 'intoOperatingExpense'
+            }],
+            ['intoAccounts', {
+              name: 'intoAccounts'
+            }],
+          ]
+        })
+      });
+    </script>
+  </body>
+</html>
