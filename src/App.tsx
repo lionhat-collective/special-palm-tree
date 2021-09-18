@@ -44,6 +44,30 @@ const ObserverPortal = (key?: string) => (props: ValueObserverProps, id: string)
   ), id)
 }
 
+const Accounts = ({ initialAccounts }: { initialAccounts?: AppConfig<ConfigFieldProps>[] }) => {
+  const [{ accounts }, { setAccounts }] = useProfitCalculator()
+  useEffect(() => {
+    if (initialAccounts && accounts.length === 0) {
+      setAccounts(initialAccounts.map(account => account[0]))
+    }
+  }, [setAccounts, accounts, initialAccounts])
+  return (
+    <>
+      {
+        initialAccounts?.map((account, index) => {
+          return PortalComponent(
+            <ProfitCalculatorField
+              name={`account-${index + 1}`}
+              key={`account-${index + 1}`} 
+              {...account[1]}
+            />,
+            account[0])
+        }) ?? null
+      }
+    </>
+  )
+}
+
 function App(props: AppProps) {
   const IncomeField = () => RenderConfig(FieldPortal('income'), props.income)
   const MaterialsField = () => RenderConfig(FieldPortal('material-cost'), props.materialCost)
@@ -51,29 +75,6 @@ function App(props: AppProps) {
   const OwnerPayPercentageField = () => RenderConfig(FieldPortal('owner-pay-percentage'), props.ownerPayPercentage)
   const TaxPercentageField = () => RenderConfig(FieldPortal('tax-percentage'), props.taxPercentage)
   const OperatingExpensePercentageField = () => RenderConfig(FieldPortal('operating-expense-percentage'), props.operatingExpensePercentage)
-  const Accounts = () => {
-    const [{ accounts }, { setAccounts }] = useProfitCalculator()
-    useEffect(() => {
-      if (props.accounts && accounts.length === 0) {
-        setAccounts(props.accounts.map(account => account[0]))
-      }
-    }, [setAccounts, accounts, props])
-    return (
-      <>
-        {
-          props.accounts?.map((account, index) => {
-            return PortalComponent(
-              <ProfitCalculatorField
-                name={`account-${index + 1}`}
-                key={`account-${index + 1}`} 
-                {...account[1]}
-              />,
-              account[0])
-          }) ?? null
-        }
-      </>
-    )
-  }
 
   return (
     <>
@@ -83,7 +84,7 @@ function App(props: AppProps) {
       <OwnerPayPercentageField />
       <TaxPercentageField />
       <OperatingExpensePercentageField />
-      <Accounts />
+      <Accounts initialAccounts={props.accounts} />
       {props.observers?.map((observer) => RenderConfig(ObserverPortal(observer[0]), observer)) ?? null}
     </>
   )
