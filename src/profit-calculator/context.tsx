@@ -29,13 +29,37 @@ export function ProfitCalculatorProvider({ children, initialState }: PropsWithCh
         dispatch({ type: actionName, payload: parsedValue })
     }, [])
 
+    const {
+        incomeReceived,
+        materialCost,
+        operatingExpensePercentage,
+        ownerPayPercentage,
+        profitPercentage,
+        taxPercentage,
+        accounts,
+    } = state
+
     useEffect(() => {
-        if (state.percentageRemaining === 0 && state.profitRemaining === 0 && state.realRevenue !== 0) {
+        if (
+            incomeReceived !== undefined &&
+            materialCost !== undefined &&
+            operatingExpensePercentage !== undefined &&
+            ownerPayPercentage !== undefined &&
+            profitPercentage !== undefined &&
+            taxPercentage !== undefined &&
+            accounts.some(account => account[1] !== undefined)
+        ) {
             dispatch({ type: 'DERIVE_REMAINING_PROFIT' })
         }
-    }, [state])
-
-    console.log({ state })
+    }, [
+        incomeReceived,
+        materialCost,
+        operatingExpensePercentage,
+        ownerPayPercentage,
+        profitPercentage,
+        taxPercentage,
+        accounts,
+    ])
 
     const value = useMemo((): ProfitCalculator => [state, {
         handleChange,

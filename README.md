@@ -2,6 +2,9 @@
 
 
 ## Installation
+
+*For a more complete example, see index.html in the repository*
+
 ```html
 <html>
     <head></head>
@@ -37,7 +40,7 @@ Configuring the Profit-First Calculator, is very simple. Nearly all properties f
 ```
 Where `document_identifier` matches an element inside the `<body>` element. **DO NOT put it on the `body` element**
 
-As you can see below, this is an example of a configuration:
+Below, is an example of a configuration:
 
 
 ```javascript
@@ -54,6 +57,9 @@ As you can see below, this is an example of a configuration:
         // you can add as many observers as you'd like
         ['real-revenue', {
             name: 'realRevenue'
+        }],
+        ['account-1', {
+            name: 'intoAccounts.1'
         }]
     ],
     accounts: [
@@ -117,7 +123,12 @@ intoProfit,
 intoOwner,
 intoTax,
 intoOperatingExpense,
-intoAccounts*
+intoAccounts.*
+
+**`intoAccounts`
+
+To access values for specific accounts, you need to specify the account id in the format of `intoAccounts.<index/number>`. e.g. `intoAccounts.1`. It's 1-indexed for simplicity of the user. 
+
 ```javascript
 [
     ['document_identifer', {

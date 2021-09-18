@@ -76,6 +76,7 @@ export function profitReducer(state: ProfitCalculatorState, action: ProfitCalcul
         case 'SET_ACCOUNTS': return {
             ...state,
             accounts: action.payload,
+            intoAccounts: action.payload.map(() => 0),
         }
         case 'SET_ACCOUNT': return calculatePercentageRemaining({
             ...state,
