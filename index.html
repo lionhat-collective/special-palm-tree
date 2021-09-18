@@ -5,17 +5,32 @@
     <link rel="icon" type="image/svg+xml" href="/src/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
+    <style>
+      header {
+        display: flex;
+        justify-content: space-between;
+      }
+      .observer-realRevenue-positive {
+        background-color: green;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
     <div>
       <header>
-        <h1>Income</h1>
-        <h3 id='real-revenue'></h3>
-        <h1>Remaining to be allocated</h1>
-        <h3 id='percent-remaining'></h3>
-        <h1>Profit Remaining</h1>
-        <h3 id='profit-remaining'></h3>
+        <div>
+          <h1>Income</h1>
+          <h3 id='real-revenue'></h3>
+        </div>
+        <div>
+          <h1>Remaining to be allocated</h1>
+          <h3 id='percent-remaining'></h3>
+        </div>
+        <div>
+          <h1>Profit Remaining</h1>
+          <h3 id='profit-remaining'></h3>
+        </div>
       </header>
       <header id="allocation-section"></header>
       <header id="profit-section"></header>
@@ -33,25 +48,25 @@
       <div>
         <ul>
           <li>
-            <span>Into Profit: <span id='intoProfit'></span></span>
+            <span>Into Profit: $<span id='intoProfit'></span></span>
           </li>
           <li>
-            <span>Into Owner: <span id='intoOwner'></span></span>
+            <span>Into Owner: $<span id='intoOwner'></span></span>
           </li>
           <li>
-            <span>Into Tax: <span id='intoTax'></span></span>
+            <span>Into Tax: $<span id='intoTax'></span></span>
           </li>
           <li>
-            <span>Into Operating Expense: <span id='intoOperatingExpense'></span></span>
+            <span>Into Operating Expense: $<span id='intoOperatingExpense'></span></span>
           </li>
           <li>
-            <span>Account 1: <span id='intoAccounts-1'></span></span>
+            <span>Account 1: $<span id='intoAccounts-1'></span></span>
           </li>
           <li>
-            <span>Account 2: <span id='intoAccounts-2'></span></span>
+            <span>Account 2: $<span id='intoAccounts-2'></span></span>
           </li>
           <li>
-            <span>Account 3: <span id='intoAccounts-3'></span></span>
+            <span>Account 3: $<span id='intoAccounts-3'></span></span>
           </li>
         </ul>
       </div>

@@ -19,7 +19,7 @@ export function ProfitCalculatorProvider({ children, initialState }: PropsWithCh
     }, [])
     const handleChange = useCallback((evt: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = evt.target;
-        const parsedValue = value !== '' ? parseFloat(value) : undefined
+        const parsedValue = value === '' || value == null || Number.isNaN(value) ? undefined : parseFloat(value)
         if (name.includes('account-')) {
             const index = parseInt(name.split('-')[1])
             dispatch({ type: "SET_ACCOUNT", payload: [`account-${index}`, parsedValue] })

@@ -34,7 +34,7 @@ export function ProfitCalculatorField(props: ProfitCalculatorFieldProps) {
         <>
             {props.label && <label htmlFor={props.name} className={'profit-calculator__field-label' + (props.labelClassName ? ` ${props.labelClassName}` : '')}>{props.label}</label>}
             <input
-                type="text"
+                type="number"
                 className={'profit-calculator__field-input' + (props.className ? ` ${props.className}` : '')}
                 name={props.name}
                 placeholder={props.placeholder}
