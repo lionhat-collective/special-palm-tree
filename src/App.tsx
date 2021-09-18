@@ -1,5 +1,6 @@
-import React, { ReactNode } from 'react'
+import React, { ReactNode, useEffect } from 'react'
 import ReactDOM from 'react-dom'
+import { useProfitCalculator } from './profit-calculator'
 import { ProfitCalculatorField, ProfitCalculatorFieldProps, ValueObserver, ValueObserverProps } from './profit-calculator/components'
 
 type AppConfig<T extends Record<string, unknown> = Record<string, unknown>> = [string, T]
@@ -12,6 +13,7 @@ export type AppProps = {
   ownerPayPercentage?: AppConfig<ConfigFieldProps>
   taxPercentage?: AppConfig<ConfigFieldProps>
   operatingExpensePercentage?: AppConfig<ConfigFieldProps>
+  accounts?: AppConfig<ConfigFieldProps>[]
   observers?: AppConfig<ValueObserverProps>[]
 }
 
@@ -49,6 +51,29 @@ function App(props: AppProps) {
   const OwnerPayPercentageField = () => RenderConfig(FieldPortal('owner-pay-percentage'), props.ownerPayPercentage)
   const TaxPercentageField = () => RenderConfig(FieldPortal('tax-percentage'), props.taxPercentage)
   const OperatingExpensePercentageField = () => RenderConfig(FieldPortal('operating-expense-percentage'), props.operatingExpensePercentage)
+  const Accounts = () => {
+    const [{ accounts }, { setAccounts }] = useProfitCalculator()
+    useEffect(() => {
+      if (props.accounts && accounts.length === 0) {
+        setAccounts(props.accounts.map(account => account[0]))
+      }
+    }, [setAccounts, accounts, props])
+    return (
+      <>
+        {
+          props.accounts?.map((account, index) => {
+            return PortalComponent(
+              <ProfitCalculatorField
+                name={`account-${index + 1}`}
+                key={`account-${index + 1}`} 
+                {...account[1]}
+              />,
+              account[0])
+          }) ?? null
+        }
+      </>
+    )
+  }
 
   return (
     <>
@@ -58,6 +83,7 @@ function App(props: AppProps) {
       <OwnerPayPercentageField />
       <TaxPercentageField />
       <OperatingExpensePercentageField />
+      <Accounts />
       {props.observers?.map((observer) => RenderConfig(ObserverPortal(observer[0]), observer)) ?? null}
     </>
   )

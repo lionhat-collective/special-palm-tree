@@ -33,8 +33,8 @@ function calculatePercentageRemaining(state: ProfitCalculatorState): ProfitCalcu
 }
 
 function calculateProfitRemaining(state: ProfitCalculatorState): ProfitCalculatorState {
-    const totalProfit = state.realRevenue - state.intoProfit;
-    const profitRemaining = totalProfit * (state.profitPercentage ?? 0) / 100;
+    const profits = state.intoProfit + state.intoOwner + state.intoTax + state.intoOperatingExpense + state.intoAccounts.reduce((acc, value) => acc + (value ?? 0), 0)
+    const profitRemaining = state.realRevenue - profits;
     return {
         ...state,
         profitRemaining,
@@ -73,13 +73,9 @@ export function profitReducer(state: ProfitCalculatorState, action: ProfitCalcul
             ...state,
             operatingExpensePercentage: action.payload,
         })
-        case 'ADD_ACCOUNT': return {
+        case 'SET_ACCOUNTS': return {
             ...state,
-            accounts: [...state.accounts, action.payload],
-        }
-        case 'REMOVE_ACCOUNT': return {
-            ...state,
-            accounts: state.accounts.filter(([id]: Account) => id !== action.payload),
+            accounts: action.payload,
         }
         case 'SET_ACCOUNT': return calculatePercentageRemaining({
             ...state,

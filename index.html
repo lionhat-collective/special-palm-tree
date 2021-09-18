@@ -26,6 +26,11 @@
       <div id="tax"></div>
       <div id="operating-expense"></div>
       <div>
+        <div id="account-1"></div>
+        <div id="account-2"></div>
+        <div id="account-3"></div>
+      </div>
+      <div>
         <ul>
           <li id='intoProfit'></li>
           <li id='intoOwner'></li>
@@ -59,6 +64,17 @@
           operatingExpensePercentage: ['operating-expense', {
             label: 'Operating Expense'
           }],
+          accounts: [
+            ['account-1', {
+              label: 'Account 1'
+            }],
+            ['account-2', {
+              label: 'Account 2'
+            }],
+            ['account-3', {
+              label: 'Account 3'
+            }]
+          ],
           observers: [
             ['real-revenue', {
               name: 'realRevenue'

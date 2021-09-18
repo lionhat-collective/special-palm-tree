@@ -55,6 +55,12 @@ As you can see below, this is an example of a configuration:
         ['real-revenue', {
             name: 'realRevenue'
         }]
+    ],
+    accounts: [
+        ['account-1', {
+            label: 'Account 1',
+            placeholder: 'Enter income for account 1'
+        }]
     ]
 }
 ```

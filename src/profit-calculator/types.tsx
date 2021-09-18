@@ -26,8 +26,7 @@ export type ProfitCalculatorAction =
     | { type: 'SET_OWNER_PAY_PERCENTAGE', payload?: number }
     | { type: 'SET_TAX_PERCENTAGE', payload?: number }
     | { type: 'SET_OPERATING_EXPENSE_PERCENTAGE', payload?: number }
-    | { type: 'ADD_ACCOUNT', payload: Account }
-    | { type: 'REMOVE_ACCOUNT', payload: string }
     | { type: 'SET_ACCOUNT', payload: Account }
+    | { type: 'SET_ACCOUNTS', payload: Account[] }
     | { type: 'DERIVE_REMAINING_PROFIT' }
     | { type: 'RESET' }
