@@ -46,7 +46,7 @@ export function ProfitCalculatorProvider({ children, initialState }: PropsWithCh
             operatingExpensePercentage !== undefined &&
             ownerPayPercentage !== undefined &&
             profitPercentage !== undefined &&
-            taxPercentage !== undefined &&
+            taxPercentage !== undefined ||
             accounts.some(account => account[1] !== undefined)
         ) {
             dispatch({ type: 'DERIVE_REMAINING_PROFIT' })
